@@ -13,14 +13,20 @@ try {
         $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
         $stmt = $db->query("SELECT id, username, message, timestamp FROM messages ORDER BY id ASC");
-        $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-    $response = [
-        'messages' => $messages,
-        'typing_users' => $_SESSION['typing_users'] ?? []
-    ];
-    echo json_encode($response);
+// Sanitize messages before sending to prevent XSS
+foreach ($messages as &$msg) {
+    $msg['message'] = htmlspecialchars($msg['message']);
+}
+unset($msg); // Unset the reference to avoid potential side effects
+
+$response = [
+    'messages' => $messages,
+    'typing_users' => $_SESSION['typing_users'] ?? []
+];
+echo json_encode($response);
 
 } catch (PDOException $e) {
     error_log("Database error: " . $e->getMessage());

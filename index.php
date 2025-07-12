@@ -18,9 +18,9 @@ if (isset($_SESSION['error_message'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Enzonic Chaos: A real-time chat application with a green theme.">
-    <meta name="keywords" content="chat, real-time, PHP, SQLite, green theme, Enzonic Chaos">
-    <meta name="author" content=" Cline">
+    <meta name="description" content="Enzonic Chaos: A real-time chat application.">
+    <meta name="keywords" content="chat, real-time, PHP, SQLite, messaging">
+    <meta name="author" content="Cline">
     <title>Enzonic Chaos</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -39,7 +39,8 @@ if (isset($_SESSION['error_message'])) {
                 <?php if (!empty($error_message)): ?>
                     <p class="error-message"><?php echo htmlspecialchars($error_message); ?></p>
                 <?php endif; ?>
-                <form id="auth-form" method="post" action="auth.php">
+<form id="auth-form" method="post" action="auth.php">
+    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <label for="terms-agree" class="terms-checkbox-label">
