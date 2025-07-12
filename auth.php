@@ -105,7 +105,13 @@ if (basename(__FILE__) == basename($_SERVER['PHP_SELF'])) {
             $_SESSION['error_message'] = 'No action specified.';
             $success = false;
         }
-        // Removed header('Location: index.php'); and exit; to prevent premature redirection when included
+        if ($success) {
+            header('Location: index.php');
+            exit;
+        } else {
+            header('Location: index.php');
+            exit;
+        }
     }
 }
 ?>

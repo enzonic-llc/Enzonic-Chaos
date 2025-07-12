@@ -8,7 +8,7 @@ Enzonic Chaos is a simple, real-time chat application built with PHP and SQLite.
 *   **User Authentication**: Users can register and log in with a username and password.
 *   **Message Persistence**: All messages are stored in an SQLite database, ensuring they are saved even after the server is stopped.
 *   **Timestamps**: Each message is logged with its submission timestamp.
-*   **Green Theme**: Matches enzonic color
+*   **Green Theme**: A pleasant and calming green color scheme for a unique aesthetic.
 *   **Send on Enter**: Messages can be sent by pressing the Enter key in the message input field.
 
 ## Requirements
