@@ -63,7 +63,7 @@ if (isset($_SESSION['error_message'])) {
                         ?>
                         <div class="message <?php echo $isCurrentUser ? 'my-message' : 'other-message'; ?>">
                             <strong><?php echo htmlspecialchars($msg['username']); ?></strong>
-                            <div class="message-content"><?php echo htmlspecialchars($msg['message']); ?></div>
+                                <div class="message-content"><?php echo $msg['message']; ?></div>
                             <span class="timestamp"><?php echo $msg['timestamp']; ?></span>
                         </div>
                     <?php endforeach; ?>
